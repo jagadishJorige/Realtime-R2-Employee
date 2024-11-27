@@ -1,0 +1,33 @@
+<mat-dialog-content class="date-dialog-content">
+    <div class="picker-container">
+        <div class="flex-buttons">
+            <button *ngIf="pickerType === 'toDate'" mat-raised-button type="button" class="button_action_style" (click)="clearDate()">
+                No Date
+            </button>
+            <button mat-raised-button type="button" class="button_action_style" (click)="setToday()">
+                Today
+            </button>
+            @if(pickerType === 'fromDate') {
+                <button mat-raised-button type="button" class="button_action_style" (click)="setNextMonday()">
+                    Next Monday
+                </button>
+                <button mat-raised-button type="button" class="button_action_style" (click)="setNextTuesday()">
+                    Next Tuesday
+                </button>
+                <button mat-raised-button type="button" class="button_action_style" (click)="setAfterOneWeek()">
+                    After 1 Week
+                </button>   
+            }
+        </div>
+        <div class="inline-picker">
+            <mat-calendar [minDate]="isFromDateSelected()" [startAt]="selectedDate()" [(selected)]="selectedDate"></mat-calendar>
+          </div>
+        </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <p class="date-selected"><img class="img-fluid" src="../../../assets/date.png" alt="Date Picker"/> {{selectedDate() | date:'d MMMM y'}}</p>
+    <div class="flex">
+        <button mat-button mat-dialog-close cdkFocusInitial class="button_dp_action_style cancel">Cancel</button>
+        <button mat-button [mat-dialog-close]="true" class="button_dp_action_style save" (click)="saveDate()">Save</button>
+    </div>
+  </mat-dialog-actions>

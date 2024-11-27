@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="floating-button">
+        <button mat-flat-button type="button" class="button_image_style" (click)="onAddEmployee()">
+            <img alt="add employees" class="img-fluid" src="../../../assets/add.png"/>
+        </button>
+    </div>
+
+    <section class="card-container">
+        <ng-container *ngIf="employees() as employees_list">
+            @if (employees_list && employees_list.length) {
+                @if(currentEmployees().length > 0) {
+                    <h4 class="title">Current Employees</h4>
+                    <mat-card appearance="outlined">
+                        <mat-card-content class="no-padding card-oveflow-hidden">
+                            <!-- (cdkDragMoved)="onSwipe($event, i)"
+                            (cdkDragEnded)="onSwipeEnd(i)" -->
+                            @for (employee of currentEmployees(); track employee.id; let i = $index) {
+                                        <div class="flex-vertical" cdkDrag>
+                                            <div class="swipe-content">
+                                                <p class="bold-title cursor" type="button" (click)="onEditDetails(employee)">{{ employee.name }}</p>
+                                                <p class="position">{{ employee.position }}</p>
+                                                <p class="dates">From {{ employee.fromDate | date:'d MMMM y' }}</p>
+                                            </div>
+                                            <button mat-raised-button color="warn" class="delete-btn" type="button" 
+                                            (click)="deleteEmployee(employee)">
+                                                <img src="../../../assets/delete.png"  />
+                                            </button>
+                                        </div>
+                            }
+                        </mat-card-content>
+                    </mat-card>
+                }
+
+                @if(previousEmployees().length > 0) {
+                    <h4 class="title">Previous Employees</h4>
+                    <mat-card appearance="outlined">
+                        <mat-card-content class="no-padding">
+                    @for (employee of previousEmployees(); track employee.id; let i = $index) {
+                        <div class="flex-vertical" cdkDrag>
+                            <div class="swipe-content">
+                                <p class="bold-title cursor" type="button" (click)="onEditDetails(employee)">{{ employee.name }}</p>
+                                <p class="position">{{ employee.position }}</p>
+                                <p class="dates">{{ employee.fromDate | date:'d MMMM y'}} - {{ employee.toDate | date:'d MMMM y' }}</p>
+                            </div>
+                            <button mat-raised-button color="warn" class="delete-btn" type="button" 
+                                            (click)="deleteEmployee(employee)">
+                                                <img src="../../../assets/delete.png"  />
+                            </button>
+                        </div>
+                    }
+                        </mat-card-content>
+                    </mat-card>
+                }
+
+
+                <p class="display_in_mobile_view">
+                    Swipe left to delete in mobile view
+                </p>
+            } @else {
+                <div class="no_records_container">
+                    <img class="img-fluid" src="../../../assets/noemployees.png" alt="No Records Found Image" />
+                </div>
+            }
+        </ng-container>
+    </section>
+</div>

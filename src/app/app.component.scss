@@ -1,0 +1,53 @@
+main {
+    width: 100%;
+    // max-width: 1200px;
+    min-height: 100%;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+}
+.content {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.mtop-1 {
+    margin-top: 16px;
+}
+.flex-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    // align-items: center;
+}
+.center-margin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.welcome-card {
+    min-width: 350px;
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.m-0 {
+    margin: 0;
+}
+
+$global-color: #1DA1F2;
+$global-text-color: #fff;
+.mdc-button.button_style {
+    background-color: $global-color;
+    color: $global-text-color;
+}
+
+.text-left {
+    text-align: left;
+}

@@ -1,0 +1,12 @@
+$global-color: #1DA1F2;
+$global-text-color: #fff;
+
+.toolbar--style {
+    background-color: $global-color;
+    color: $global-text-color;
+    justify-content: space-between;
+}
+
+.button_icon_style {
+    line-height: normal;
+}

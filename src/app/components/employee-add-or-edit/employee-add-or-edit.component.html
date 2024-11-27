@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <section class="card-container background-full">
+            <div class="form-container" novalidate>
+                    <mat-form-field appearance="outline" class="form-control">
+                        <input matInput type="text" placeholder="Employee Name" 
+                        [value]="employeeName()" (input)="onInputChange($event)"/>
+                        <span matTextPrefix>
+                            <img class="img-fluid" src="../../../assets/employye.png" />
+                            &nbsp;</span>
+                    </mat-form-field>
+
+                <mat-form-field appearance="outline" class="form-control" (click)="openBottomSheet()">
+                        <input matInput type="text" placeholder="Select Role" [value]="employeePosition()" readonly/>
+                        <span matTextPrefix>
+                            <img class="img-fluid" src="../../../assets/position.png" />
+                            &nbsp;</span>
+                        <span matTextSuffix>
+                            <img class="img-fluid" src="../../../assets/arrow_drop_down.png" />
+                        </span>
+                    </mat-form-field>
+                
+    
+                <div class="flex-vertical">
+                    <mat-form-field appearance="outline" class="form-control date-controls" (click)="openDatePicker($event, 'fromDate')">
+                        <input matInput type="text" placeholder="Today" [value]="(fromDate() | date:'d MMMM y')" readonly/>
+                        <span matTextPrefix>
+                            <img class="img-fluid" src="../../../assets/date.png" />
+                            &nbsp;</span>
+                    </mat-form-field>
+    
+                    <div class="arrow-icon-image">
+                        <img class="img-fluid" src="../../../assets/arrow_right_alt.png" />
+                    </div>
+    
+                    <mat-form-field appearance="outline" class="form-control date-controls" (click)="openDatePicker($event, 'toDate')">
+                        <input matInput type="text" placeholder="No date" [value]="(toDate() | date:'d MMMM y')" readonly/>
+                        <span matTextPrefix>
+                            <img class="img-fluid" src="../../../assets/date.png" />
+                            &nbsp;</span>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="floating-action-buttons">
+                <button mat-flat-button type="button" class="button_action_style cancel" (click)="redirectTo()">
+                    Cancel
+                </button>
+                <button mat-flat-button type="button" class="button_action_style save" (click)="saveEmployee()"
+                [disabled]="formSubmitted()">
+                    @if(loader()) {
+                        <mat-spinner diameter="25"></mat-spinner>
+                    } @else {
+                        Save
+                    }
+                </button>
+            </div>
+    </section>
+</div>

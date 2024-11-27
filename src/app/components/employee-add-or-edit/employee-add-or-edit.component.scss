@@ -1,0 +1,138 @@
+@mixin make-container(
+  $padding-x: $container-padding-x,
+  $padding-y: $container-padding-y
+) {
+  width: 100%;
+  padding-right: $padding-y;
+  padding-left: $padding-y;
+  padding-top: $padding-x;
+  padding-bottom: $padding-x;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+.container-fluid {
+  @include make-container(1rem, 1.25rem);
+}
+.background-full {
+    background-color: #fff;
+}
+.card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+  height: calc(100vh - 100px);
+}
+
+// @media (min-width: 1400px) {
+//   .card-container {
+//     width: 1320px;
+//   }
+// }
+
+@media (min-width: 1200px) {
+  .card-container {
+    width: 800px;
+  }
+}
+
+@media (max-width: 576px) {
+    .container-fluid {
+        @include make-container(0, 0);
+    }
+    .title {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .card-container {
+        height: calc(100vh - 62px);
+    }
+}
+
+.form-container {
+    // max-width: 400px;
+    // margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    // background-color: #fafafa;
+    // border-radius: 8px;
+    // box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    // margin-bottom: 20px;
+}
+.flex-vertical {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: baseline;
+}
+.form-control {
+    width: 100%;
+}
+::ng-deep .mat-mdc-form-field.form-control .mat-mdc-text-field-wrapper {
+    height: 40px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+::ng-deep .mat-mdc-form-field.form-control .mat-mdc-form-field-flex {
+    height: 40px;
+    align-items: center; 
+}
+::ng-deep .mat-mdc-form-field.form-control .mat-mdc-form-field-text-prefix,
+::ng-deep .mat-mdc-form-field.form-control .mat-mdc-form-field-text-suffix {
+    line-height: 2px;
+}
+::ng-deep .mat-mdc-form-field.form-control .mat-mdc-form-field-infix {
+    padding-top: 8px !important;
+    min-height: auto !important;
+    padding-bottom: 8px;
+}
+
+
+::ng-deep .mat-mdc-form-field.date-controls .mat-mdc-form-field-text-prefix {
+    margin-right: 4px;
+}
+
+$global-color: #1da1f2;
+$global-text-color: #fff;
+$global-secondary-color: #fafafa;
+
+.button_action_style {
+    height: auto;
+    min-width: 75px;
+    min-height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+.button_action_style.cancel {
+    color: $global-color;
+    background-color: $global-secondary-color;
+}
+.button_action_style.save {
+    background-color: $global-color;
+    color: $global-text-color;
+}
+$border-color: #F2F2F2;
+.floating-action-buttons {
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 16px;
+    border-top: 1px solid $border-color;
+}
+
+::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle, 
+::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke: #FFF !important;
+}
